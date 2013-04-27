@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<script type="text/javascript" src="http://cn-style.gcimg.net/v6/js/common/jquery.js"></script>
+<script type="text/javascript">
+	function get_(callback) {
+		$.getJSON('http://192.168.0.115/~echo/', function (data) {
+			callback && callback(data);
+		});
+	}
+	var a;
+	get_(function (data) {
+		a = data;
+	});
+	setTimeout(function () {
+		console.log(a);
+	}, 19);
+</script>
+
+</body>
+</html>
