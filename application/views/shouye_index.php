@@ -14,15 +14,15 @@
                         if ($rows) {
                             foreach ($rows as $value) {
                     ?>
-					<li>
+					<li class="hover">
 						<div class="number"><a href="#"><?php echo $value['number']?></a></div>
 						<div class="ctrl">
 							<a href="#" class="collect">加入备选单</a>
-							<a href="#" class="book">立刻预约</a>
+							<a href="<?php echo site_url("index/offer/id/".$value['nid']);?>" class="book">立刻预约</a>
 						</div>
 						<div class="detail">
-							<span class="fare"><b>价格：</b>¥200</span>
-							<span class="price">¥100</span>
+							<?php if ($value['oldprice']) {?><span class="fare"><b>价格：</b>¥<?php echo $value['oldprice']?></span><?php }?>
+							<?php if ($value['newprice']) {?><span class="price">¥<?php echo $value['newprice']?></span><?php }?>
 						</div>
 					</li>
                     <?php
@@ -46,8 +46,8 @@
 							<a href="#" class="book">立刻预约</a>
 						</div>
 						<div class="detail">
-							<span class="fare"><b>话费：</b>¥200</span>
-							<span class="price">¥100</span>
+							<?php if ($value['huafei']) {?><span class="fare"><b>话费：</b>¥<?php echo $value['huafei']?></span><?php }?>
+							<?php if ($value['newprice']) {?><span class="price">¥<?php echo $value['newprice']?></span><?php }?>
 						</div>
 					</li>
                     <?php
@@ -76,11 +76,11 @@
 				<h3><span>已售靓号</span></h3>
 				<ul class="history">
                     <?php
-                        $rows = $this->number->index(1);
+                        $rows = $this->number->index(1, 0, 10);
                         if ($rows) {
                             foreach ($rows as $value) {
                     ?>
-					<li><span><?php echo $value['number']?></span><span class="price">¥100</span></li>
+					<li><span><?php echo preg_replace("/(1\d{1,3})\d\d(\d{0,2})/", "\$1****\$3", $value['number']);?></span><?php if ($value['newprice']) {?><span class="price">¥<?php echo $value['newprice']?></span><?php }?></li>
                     <?php
                         }
                     }

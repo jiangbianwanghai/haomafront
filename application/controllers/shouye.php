@@ -8,4 +8,10 @@ class shouye extends CI_Controller {
         $this->load->model('Model_number', 'number', TRUE);
         $this->load->view('shouye_index');
     }
+    
+    public function offer()
+    {
+        $this->load->helper('url');
+        $this->load->view('shouye_offer');
+    }
 }
