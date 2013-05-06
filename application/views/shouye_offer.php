@@ -20,37 +20,59 @@
         </div>
         <div class="book-form">
             <h3>提供您的联系方式了，以供我们及时与您取得联系。</h3>
-            <form action="#" method="post">
+                <?php 
+                  $attr = array('id' => 'offer-add');
+                  echo form_open('shouye/offer/id/'.$this->uri->segment(4), $attr, array('nid' => $this->uri->segment(4)));
+                ?>
                 <div class="row">
                     <div class="label">姓名</div>
-                    <input type="text" class="input" />
+                    <?php
+                      $data = array('id' => 'username', 'name' => 'username', 'class' => 'input');
+                      echo form_input($data);
+                      echo form_error('username', '<span class="error">', '</span>');
+                    ?>
                 </div>
                 <div class="row">
                     <div class="label">称呼</div>
-                    <select>
-                        <option>先生</option>
-                        <option>女士</option>
+                    <select name="sex">
+                        <option value="1">先生</option>
+                        <option value="-1">女士</option>
                     </select>
                 </div>
                 <div class="row">
                     <div class="label">联系电话</div>
-                    <input type="text" class="input" />
+                    <?php
+                      $data = array('id' => 'mobile', 'name'  => 'mobile', 'class' => 'input');
+                      echo form_input($data);
+                      echo form_error('mobile', '<span class="error">', '</span>');
+                    ?>
                 </div>
                 <div class="row">
                     <div class="label">QQ号码</div>
-                    <input type="text" class="input" />
+                    <?php
+                      $data = array('id' => 'qq', 'name' => 'qq', 'class' => 'input');
+                      echo form_input($data);
+                      echo form_error('qq', '<span class="error">', '</span>');
+                    ?>
                 </div>
                 <div class="row">
                     <div class="label">预约备注</div>
-                    <input type="text" class="input" />
+                    <?php
+                      $data = array('id' => 'note', 'name'  => 'note', 'class' => 'input');
+                      echo form_input($data);
+                      echo form_error('note', '<span class="error">', '</span>');
+                    ?>
                 </div>
                 <div class="row">
                     <div class="label">验证字符</div>
-                    <img src="" /><br />
-                    <input type="text" class="input" />
+                    <?php
+                      $data = array('id' => 'captcha', 'name'  => 'captcha', 'class' => 'input');
+                      echo form_input($data);
+                      echo form_error('note', '<span class="error">', '</span>');
+                    ?><img src="<?php echo site_url("shouye/captcha");?>" align="absmiddle" />
                 </div>
                 <div class="submit">
-                    <input type="submit" value="提交预约" class="submit-button" />
+                    <input type="submit" value="提交预约" name="button" class="submit-button" />
                 </div>
             </form>
         </div>

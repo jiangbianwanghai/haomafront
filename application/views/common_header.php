@@ -23,20 +23,15 @@
 		<div id="navbar">
 			<div class="layout">
 				<ul class="nav">
-					<li class="current"><a href="#">首页</a></li>
-					<li><a href="#">我要选号</a></li>
-					<li><a href="#">活动专区</a></li>
+					<li class="current"><a href="/">首页</a></li>
+					<li><a href="<?php echo site_url("so");?>">我要选号</a></li>
+					<li><a href="<?php echo site_url("shouye/special");?>">活动专区</a></li>
 				</ul>
 				<div class="cart">
-					<p><a href="#" class="active">号码备选单<em>6</em><i></i></a></p>
+					<p><a href="#" class="active">号码备选单<em>1</em><i></i></a></p>
 					<div class="box">
 						<ul>
 							<li><a href="#">15225192625<span>¥1300</span></a></li>
-							<li><a href="#">13822338976<span>¥50</span></a></li>
-							<li><a href="#">18912332133<span>¥300</span></a></li>
-							<li><a href="#">13654237890<span>¥800</span></a></li>
-							<li><a href="#">13467899876<span>¥5000</span></a></li>
-							<li><a href="#">17912345678<span>¥10</span></a></li>
 						</ul>
 						<a href="#" class="empty">清空</a>
 					</div>

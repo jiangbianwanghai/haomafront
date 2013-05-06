@@ -18,7 +18,7 @@
 						<div class="number"><a href="#"><?php echo $value['number']?></a></div>
 						<div class="ctrl">
 							<a href="#" class="collect">加入备选单</a>
-							<a href="<?php echo site_url("index/offer/id/".$value['nid']);?>" class="book">立刻预约</a>
+							<a href="<?php echo site_url("shouye/offer/id/".$value['nid']);?>" class="book">立刻预约</a>
 						</div>
 						<div class="detail">
 							<?php if ($value['oldprice']) {?><span class="fare"><b>价格：</b>¥<?php echo $value['oldprice']?></span><?php }?>

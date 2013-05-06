@@ -23,6 +23,20 @@ class Model_offer extends CI_Model {
         }
         return $result;
     }
+    
+    public function insert()
+    {
+        $data = array(
+            'nid' => $this->input->post('nid'),
+            'username' => $this->input->post('username'),
+            'sex' => $this->input->post('sex'),
+            'mobile' => $this->input->post('mobile'),
+            'qq' => $this->input->post('qq'),
+            'note' => $this->input->post('note'),
+            'addtime' => time()
+        );
+        return $this->db->insert('offer', $data);
+    }
 }
 
 /* End of file model_offer.php */

@@ -8,12 +8,10 @@
 |
 */
 $config = array(
-
-    //用户登录
-    'admin/signin' => array(
+    'shouye/offer' => array(
         array(
             'field'   => 'username', 
-            'label'   => '账号', 
+            'label'   => '姓名', 
             'rules'   => 'trim|required|min_length[5]|max_length[12]|xss_clean'
         ),
         array(
@@ -21,25 +19,7 @@ $config = array(
             'label'   => '密码', 
             'rules'   => 'trim|required|md5'
         )
-    ),
-    
-    //添加分类
-    'category/add' => array(
-        array(
-            'field'   => 'catename', 
-            'label'   => '分类名称', 
-            'rules'   => 'trim|required|min_length[2]|max_length[12]|xss_clean'
-        )
-    ),
-    
-    //添加号码
-    'number/add' => array(
-        array(
-            'field'   => 'number', 
-            'label'   => '号码名称', 
-            'rules'   => 'trim|required|min_length[11]|max_length[11]|xss_clean'
-        )
-    ),
+    )
 );
 
 /* End of file form_validation.php */
