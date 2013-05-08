@@ -1,7 +1,8 @@
 html{color:#333;background:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}body,button,input,select,textarea{font:12px/1.5 'Microsoft YaHei UI','Microsoft YaHei',SimSun,'Segoe UI',Tahoma,Helvetica,Sans-Serif}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}th{text-align:inherit}fieldset,img{border:0}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%}a{text-decoration:none}a:hover{text-decoration:underline}.clf:after,#content:after,.layout:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}.clf,#content,.layout{zoom:1}.clear{font-size:0;line-height:0;height:0;clear:both;visibility:hidden;overflow:hidden}.fl{float:left}.fr{float:right}.fl,.fr{display:inline}
 
 body{color: #454545;}
-#header{margin-bottom: 35px;background-color: #1a1a1a;}
+#wrapper{padding-top: 173px;}
+#header{background-color: #1a1a1a;position: fixed;width: 100%;top: 0;z-index: 111;}
 #masthead,#content,.layout{width: 1000px;margin: 0 auto;}
 a{color: #1570A6;}
 a:hover{color: #24459A;text-decoration: none;}
@@ -31,7 +32,7 @@ a:hover{color: #24459A;text-decoration: none;}
 
 .cart p em{margin-left: 5px;}
 .cart i{position: absolute;width: 11px;height: 8px;background: url(arr_down.png) 0 0 no-repeat;top: 12px;right: 10px;}
-.cart .box{position: absolute;top: 33px;background: #fff;border: 2px solid #1e5dc3;border-top: none;right: 0;padding-bottom: 10px;padding-top: 10px;width: 220px;z-index: 6;box-shadow: 1px 1px 10px rgba(0,0,0,.3)}
+.cart .box{position: absolute;top: 33px;background: #fff;border: 2px solid #1e5dc3;border-top: none;right: 0;padding-bottom: 10px;padding-top: 10px;width: 220px;z-index: 6;box-shadow: 1px 1px 10px rgba(0,0,0,.3);display: none;}
 .cart .box p{padding-left: 30px;color: #454545;}
 .cart ul{padding-bottom: 10px;}
 .cart li{vertical-align: middle;}
@@ -42,8 +43,9 @@ a:hover{color: #24459A;text-decoration: none;}
 .cart .empty:hover{background-color: #1e5dc3;color: #fff;}
 
 .cart p a:hover,
-.cart .active,
+.cart .active a,
 .entry .ctrl .collect:hover{background-color: #1e5dc3;}
+
 
 .main{width: 660px;float: left;}
 .aside{width: 300px;float: right;}
