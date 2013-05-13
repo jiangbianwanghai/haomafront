@@ -79,7 +79,7 @@
         <div class="section">
             
             <ul class="entry">
-                <li class="hover">
+                <li>
                     <div class="number"><a href="#">15038275998</a></div>
                     <div class="ctrl">
                         <a href="#" class="collect">加入备选单</a>

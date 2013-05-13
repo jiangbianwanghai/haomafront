@@ -14,7 +14,7 @@
                         if ($rows) {
                             foreach ($rows as $value) {
                     ?>
-					<li class="hover">
+					<li>
 						<div class="number"><a href="#"><?php echo $value['number']?></a></div>
 						<div class="ctrl">
 							<a href="#" class="collect">加入备选单</a>
