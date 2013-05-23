@@ -6,7 +6,8 @@ class shouye extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->model('Model_number', 'number', TRUE);
-        $this->load->view('shouye_index');
+        $data['rows'] = $this->number->index(1);
+        $this->load->view('shouye_index', $data);
     }
     
     public function offer()
@@ -17,16 +18,20 @@ class shouye extends CI_Controller {
             if ($this->session->flashdata('captcha_word') != $this->input->post('captcha')) {
                 exit('验证码错误');
             }
-            if ($this->form_validation->run()) {
+            //if ($this->form_validation->run()) {
                 $this->load->model('Model_offer', 'offer', TRUE);
                 if ($this->offer->insert()) {
                     redirect('/', 'location', 301);
                 }
-            } else {
+            /* } else {
+                $this->load->model('Model_number', 'number', TRUE);
+                $data['row'] = $this->number->fetch_one($this->input->post('nid'), array('number', 'kafei', 'huafei', 'newprice'));
                 $this->load->view('shouye_offer');
-            }
+            } */
         } else {
-            $this->load->view('shouye_offer');
+            $this->load->model('Model_number', 'number', TRUE);
+            $data['row'] = $this->number->fetch_one($this->uri->segment(3, 0), array('nid', 'number', 'kafei', 'huafei', 'newprice'));
+            $this->load->view('shouye_offer', $data);
         }
     }
     

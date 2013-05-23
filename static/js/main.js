@@ -76,9 +76,7 @@
 		btnClear = cart.find('.empty'),
 		
 		btnCollect = $('.ctrl .collect'),
-		btnBook = $('.ctrl .book'),
-		
-		zz = {};
+		btnBook = $('.ctrl .book');
 	
 	zz = {
 		
@@ -175,8 +173,25 @@
 		},
 		
 		getParams: function () {
+			var params = $('.filter .params'),
+				arr = [];
+			params.each(function (k, v) {
+				var f = $(v).find('.active').attr('href');
+				if(f.indexOf('=') !== -1) {
+					arr.push(f.split('=')[1]);
+				}
+			});
+			return arr.join(',');
+		},
+		
+		getList: function (page) {
+			var page = page || 1,
+				params = this.getParams(),
+				url = 'htt://search.zz10086.cn/';
 			
-			var a;
+			$.get(url + '?' + params + '&page=' + page, function () {
+				
+			});
 			
 		},
 		
@@ -213,8 +228,11 @@
 			});
 			
 			$('.params a').click(function () {
-				var $this = $(this);
+				var $this = $(this),
+					param;
 				$this.addClass('active').siblings('a').removeClass();
+				param  = that.getParams();
+				location.href = 'http://www.zz10086.cn/so?param=' + param;
 				return false;
 			});
 			

@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.zz10086.com/';
+$config['base_url']	= 'http://www.zz10086.cn/';
 
 /*
 |--------------------------------------------------------------------------

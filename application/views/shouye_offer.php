@@ -3,13 +3,13 @@
     <div class="layout buy">
         <h2>预约靓号<span>请与10分钟内完成提交，避免被人抢到</span></h2>
         <div class="number-info">
-            <h1>15023156231</h1>
+            <h1><?php echo $row['number']?></h1>
             <ul>
                 <li>
                     <h3>资费说明：</h3>
-                    <p>话费：¥200</p>
-                    <p>卡费：¥2000</p>
-                    <p>合计：¥2200</p>
+                    <p>话费：¥<?php echo $row['huafei']?></p>
+                    <p>卡费：¥<?php echo $row['kafei']?></p>
+                    <p>合计：¥<?php echo $row['newprice']?></p>
                 </li>
                 <li>
                     <h3>拥有此号码，你可以获得：</h3>
@@ -22,7 +22,7 @@
             <h3>提供您的联系方式了，以供我们及时与您取得联系。</h3>
                 <?php 
                   $attr = array('id' => 'offer-add');
-                  echo form_open('shouye/offer/id/'.$this->uri->segment(4), $attr, array('nid' => $this->uri->segment(4)));
+                  echo form_open('shouye/offer/id/'.$this->uri->segment(4), $attr, array('nid' => $row['nid']));
                 ?>
                 <div class="row">
                     <div class="label">姓名</div>
