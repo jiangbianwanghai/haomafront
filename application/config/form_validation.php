@@ -12,7 +12,7 @@ $config = array(
         array(
             'field'   => 'username', 
             'label'   => '姓名', 
-            'rules'   => 'trim|required|min_length[5]|max_length[12]|xss_clean'
+            'rules'   => 'trim|required|min_length[2]|max_length[12]|xss_clean'
         )
     )
 );

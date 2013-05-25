@@ -6,7 +6,16 @@ class shouye extends CI_Controller {
     {
         $this->load->helper('url');
         $this->load->model('Model_number', 'number', TRUE);
-        $data['rows'] = $this->number->index(1);
+        // 顶级靓号
+        $this->load->model('Model_catemap', 'catemap', TRUE);
+        $ids_arr = $this->catemap->fetch_all_by_cateid(73);
+        $data['tops'] = $this->number->fetch_all_by_nids($ids_arr, array('nid', 'number', 'kafei', 'newprice'));
+        // 最新推荐
+        $this->load->model('Model_catemap', 'catemap', TRUE);
+        $ids_arr = $this->catemap->fetch_all_by_cateid(74);
+        $data['recom'] = $this->number->fetch_all_by_nids($ids_arr, array('nid', 'number', 'kafei', 'newprice'));
+        // 已售号码
+        $data['trade'] = $this->number->index(-1, 0, 10);
         $this->load->view('shouye_index', $data);
     }
     
@@ -18,16 +27,18 @@ class shouye extends CI_Controller {
             if ($this->session->flashdata('captcha_word') != $this->input->post('captcha')) {
                 exit('验证码错误');
             }
-            //if ($this->form_validation->run()) {
+            if ($this->form_validation->run()) {
                 $this->load->model('Model_offer', 'offer', TRUE);
+                $this->load->model('Model_number', 'number', TRUE);
                 if ($this->offer->insert()) {
+                    $this->number->update_status(array($this->input->post('nid')), '-2');
                     redirect('/', 'location', 301);
                 }
-            /* } else {
+            } else {
                 $this->load->model('Model_number', 'number', TRUE);
-                $data['row'] = $this->number->fetch_one($this->input->post('nid'), array('number', 'kafei', 'huafei', 'newprice'));
-                $this->load->view('shouye_offer');
-            } */
+                $data['row'] = $this->number->fetch_one($this->input->post('nid'), array('nid', 'number', 'kafei', 'huafei', 'newprice'));
+                $this->load->view('shouye_offer', $data);
+            }
         } else {
             $this->load->model('Model_number', 'number', TRUE);
             $data['row'] = $this->number->fetch_one($this->uri->segment(3, 0), array('nid', 'number', 'kafei', 'huafei', 'newprice'));

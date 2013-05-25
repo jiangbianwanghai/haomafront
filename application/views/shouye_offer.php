@@ -22,7 +22,7 @@
             <h3>提供您的联系方式了，以供我们及时与您取得联系。</h3>
                 <?php 
                   $attr = array('id' => 'offer-add');
-                  echo form_open('shouye/offer/id/'.$this->uri->segment(4), $attr, array('nid' => $row['nid']));
+                  echo form_open('shouye/offer', $attr, array('nid' => $row['nid']));
                 ?>
                 <div class="row">
                     <div class="label">姓名</div>

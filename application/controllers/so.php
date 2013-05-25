@@ -17,6 +17,13 @@ class so extends CI_Controller {
     {
         $this->load->helper(array('form', 'url'));
         $this->load->model('Model_number', 'number', TRUE);
+        if (file_exists('./searchlog.php')) {
+            require './searchlog.php';
+            if (count($searchlog)) {
+                $searchlog = array_slice($searchlog, 0, 10);
+            }
+        }
+        $data['searchlog'] = $searchlog;
         if ($this->input->get('param')) {
             $data['param'] = explode(',', $this->input->get('param'));
             if ($data['param']) {
@@ -43,6 +50,20 @@ class so extends CI_Controller {
                 $data['rows']['num'] = count($ids_arr);
                 $ids = array_slice($ids_arr, ($this->input->get('page')-1)*20, 20);
                 $data['rows']['data'] = $this->number->fetch_all_by_nids($ids, array('nid', 'number', 'kafei', 'newprice'));
+            }
+        } elseif ($this->input->get('wd')) {
+            if (preg_match("/^[0-9]+$/i", $this->input->get('wd'))) {
+                $page = $this->input->get('page') ? $this->input->get('page') : 1;
+                $data['rows'] = $this->number->like($this->input->get('wd'), ($page-1)*20);
+                if ($searchlog) {
+                    array_unshift($searchlog, $this->input->get('wd'));
+                } else {
+                    $searchlog[] = $this->input->get('wd');
+                }
+                $searchlog = array_unique($searchlog);
+                $this->load->helper('file');
+                $content = "<?php\n//分类配置文件\n\$searchlog = ".var_export($searchlog, true).";";
+                write_file('./searchlog.php', $content);
             }
         } else {
             $page = $this->input->get('page') ? $this->input->get('page') : 1;
@@ -73,6 +94,16 @@ class so extends CI_Controller {
         $this->pagination->initialize($config);
         $data['pages'] = $this->pagination->create_links();
         $this->load->view('so_index', $data);
+    }
+    
+    public function search()
+    {
+        $this->load->helper('url');
+        if ($this->input->get('wd')) {
+            echo $this->input->get('wd');
+        } else {
+            redirect('/so', 'location', 301);
+        }
     }
 }
 

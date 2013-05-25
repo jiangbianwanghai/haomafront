@@ -2,32 +2,6 @@
 <div id="content">
     <div class="main">
         <div class="filter">
-            <ul>
-            <?php
-                if (isset($category) && $category) {
-                    foreach ($category as $value) {
-            ?>
-                <li>
-                    <div class="label"><?php echo $value['catename']?>：</div>
-                    <?php
-                        if ($value['option']) {
-                            $option = unserialize($value['option']);
-                    ?>
-                    <div class="params">
-                        <a href="/so" <?php if(isset($cate_prefix) && !in_array($value['cateid'], $cate_prefix) || !isset($cate_prefix)) { echo "class=\"active\"";}?>>全部</a>
-                        <?php foreach ($option as $k => $v) {?>
-                        <a href="<?php echo '?param='.$value['cateid'].$k;?>" <?php if(isset($param) && in_array($value['cateid'].$k, $param)) { echo "class=\"active\"";}?>><?php echo $v;?></a>
-                        <?php }?>
-                    </div>
-                    <?php
-                        }
-                    ?>
-                </li>
-            <?php
-                    }
-                }
-            ?>
-            </ul>
             <p class="total">共有<em><?php echo $rows['num']?></em>个号码等您挑选。</p>
         </div>
         <div class="section">

@@ -33,7 +33,23 @@ class model_number extends CI_Model {
         $this->db->where('status', $status);
         $result['num'] = $this->db->count_all_results('number');
         if ($result['num'] > 0) { 
-            $this->db->select('*')->from('number')->where('status', $status)->limit($limit, $offset)->order_by("nid", "desc");;
+            $this->db->select('*')->from('number')->where('status', $status)->limit($limit, $offset)->order_by("nid", "desc");
+            $query = $this->db->get();
+            foreach ($query->result_array() as $row)
+            {
+                $result['data'][] = $row;
+            }
+        }
+        return $result;
+    }
+    
+    public function like($wd, $offset = 0, $limit = 20)
+    {
+        $result = array('num' => 0, 'data' => array());
+        $this->db->like('number', $wd); 
+        $result['num'] = $this->db->count_all_results('number');
+        if ($result['num'] > 0) { 
+            $this->db->select('*')->from('number')->like('number', $wd)->limit($limit, $offset)->order_by("nid", "desc");
             $query = $this->db->get();
             foreach ($query->result_array() as $row)
             {

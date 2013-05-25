@@ -7,11 +7,11 @@
             </ul>
         </div>
         <div class="section">
-            <h3><span>顶级靓号</span><a href="#">更多</a></h3>
+            <h3><span>顶级靓号</span><a href="<?php echo site_url("so?param=73");?>">更多</a></h3>
             <ul class="entry">
                 <?php
-                    if ($rows['data']) {
-                        foreach ($rows['data'] as $value) {
+                    if ($tops) {
+                        foreach ($tops as $value) {
                 ?>
                 <li>
                     <div class="number"><a href="#"><?php echo $value['number']?></a></div>
@@ -31,11 +31,11 @@
             </ul>
         </div>
         <div class="section">
-            <h3><span>最新推荐</span><a href="#">更多</a></h3>
+            <h3><span>最新推荐</span><a href="<?php echo site_url("so?param=74");?>">更多</a></h3>
             <ul class="entry">
                 <?php
-                    if ($rows['data']) {
-                        foreach ($rows['data'] as $value) {
+                    if ($recom) {
+                        foreach ($recom as $value) {
                 ?>
                 <li>
                     <div class="number"><a href="#"><?php echo $value['number']?></a></div>
@@ -44,7 +44,7 @@
                         <a href="<?php echo site_url("shouye/offer/".$value['nid']);?>" class="book">立刻预约</a>
                     </div>
                     <div class="detail">
-                        <?php if ($value['huafei']) {?><span class="fare"><b>话费：</b>¥<?php echo $value['huafei']?></span><?php }?>
+                        <span class="fare"><b>话费：</b>¥<?php echo $value['kafei']?></span>
                         <?php if ($value['newprice']) {?><span class="price">¥<?php echo $value['newprice']?></span><?php }?>
                     </div>
                 </li>
@@ -61,21 +61,11 @@
             <div class="go">挑选靓号<span>></span>在线预约<span>></span>送货上门</div>
         </div>
         <div class="shell">
-            <h3><span>常见问题</span></h3>
-            <ul class="faq">
-                <li><a href="#">美图秀秀将推自拍手机 营销模式类似小米 第二代或在研发中</a></li>
-                <li><a href="#">QQ号码被盗了如何申诉？</a></li>
-                <li><a href="#">如何点亮“靓”字图标？</a></li>
-                <li><a href="#">罗永浩锤子手机ROM今晚正式发布：大戏还是闹剧？</a></li>
-                <li><a href="#">中国电信秘密研发翼信 运营商谋局自有通讯应用</a></li>
-            </ul>
-        </div>
-        <div class="shell">
             <h3><span>已售靓号</span></h3>
             <ul class="history">
                 <?php
-                    if ($rows['data']) {
-                        foreach ($rows['data'] as $value) {
+                    if ($trade['data']) {
+                        foreach ($trade['data'] as $value) {
                 ?>
                 <li><span><?php echo preg_replace("/(1\d{1,3})\d\d(\d{0,2})/", "\$1****\$3", $value['number']);?></span><?php if ($value['newprice']) {?><span class="price">¥<?php echo $value['newprice']?></span><?php }?></li>
                 <?php

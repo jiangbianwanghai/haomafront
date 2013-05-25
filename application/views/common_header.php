@@ -14,8 +14,8 @@
 				<p>ZZ10086.cn</p>
 			</div>
 			<div class="search">
-				<form action="/" method="post">
-					<input type="text" name="q" title="搜索号码" />
+				<form action="/so" method="get">
+					<input type="text" name="wd" title="搜索号码" />
 					<button type="submit">搜索</button>
 				</form>
 			</div>
@@ -24,10 +24,10 @@
 			<div class="layout">
 				<ul class="nav">
 					<li class="current"><a href="/">首页</a></li>
-					<li><a href="#">0371手机号</a></li>
-					<li><a href="#">省内随意打</a></li>
+					<li><a href="<?php echo site_url("hao?cid=70");?>">0371手机号</a></li>
+					<li><a href="<?php echo site_url("hao?cid=71");?>">省内随意打</a></li>
 					<li><a href="<?php echo site_url("so");?>">移动选号</a></li>
-					<li><a href="<?php echo site_url("shouye/special");?>">活动专区</a></li>
+					<li><a href="<?php echo site_url("hao?cid=72");?>">活动专区</a></li>
 				</ul>
 				<div class="cart">
 					<p><a href="#">号码备选单<em>0</em><i></i></a></p>
