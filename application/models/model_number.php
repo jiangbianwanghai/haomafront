@@ -95,6 +95,7 @@ class model_number extends CI_Model {
     
     public function fetch_all_by_nids($array, $field = array())
     {
+        $result = array();
         $this->db->where_in('nid', $array);
         if ($field) {
             $field_str = implode(',', $field);
@@ -104,7 +105,9 @@ class model_number extends CI_Model {
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
             {
-                $result[$row['nid']] = $row;
+                if ($row['status'] == 1) {
+                    $result[$row['nid']] = $row;
+                }
             }
         }
         return $result;

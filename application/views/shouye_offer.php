@@ -65,12 +65,12 @@
                 </div>
                 <div class="row">
                     <div class="label">验证字符</div>
-                    <img src="<?php echo site_url("shouye/captcha");?>" /><br />
+                    <img id="Image1" src="<?php echo site_url("shouye/captcha");?>" /> <a href="javascript:changeImg();" style="color:red; font-size:12px; text-decoration:none;">看不清，换一张</a><br />
                     <?php
                       $data = array('id' => 'captcha', 'name'  => 'captcha', 'class' => 'input');
                       echo form_input($data);
                       echo form_error('note', '<span class="error">', '</span>');
-                    ?>
+                    ?><span id="yzm"></span>
                 </div>
                 <div class="submit">
                     <input type="submit" value="提交预约" name="button" class="submit-button" />

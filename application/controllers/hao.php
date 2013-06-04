@@ -29,7 +29,7 @@ class hao extends CI_Controller {
             if ($ids_arr) {
                 $data['rows']['num'] = count($ids_arr);
                 $ids = array_slice($ids_arr, ($this->input->get('page')-1)*20, 20);
-                $data['rows']['data'] = $this->number->fetch_all_by_nids($ids, array('nid', 'number', 'kafei', 'newprice'));
+                $data['rows']['data'] = $this->number->fetch_all_by_nids($ids, array('nid', 'number', 'kafei', 'newprice', 'status'));
             }
         }
         $this->load->library('pagination');

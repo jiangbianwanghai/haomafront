@@ -9,11 +9,11 @@ class shouye extends CI_Controller {
         // 顶级靓号
         $this->load->model('Model_catemap', 'catemap', TRUE);
         $ids_arr = $this->catemap->fetch_all_by_cateid(73);
-        $data['tops'] = $this->number->fetch_all_by_nids($ids_arr, array('nid', 'number', 'kafei', 'newprice'));
+        $data['tops'] = $this->number->fetch_all_by_nids($ids_arr, array('nid', 'number', 'kafei', 'newprice', 'status'));
         // 最新推荐
         $this->load->model('Model_catemap', 'catemap', TRUE);
         $ids_arr = $this->catemap->fetch_all_by_cateid(74);
-        $data['recom'] = $this->number->fetch_all_by_nids($ids_arr, array('nid', 'number', 'kafei', 'newprice'));
+        $data['recom'] = $this->number->fetch_all_by_nids($ids_arr, array('nid', 'number', 'kafei', 'newprice', 'status'));
         // 已售号码
         $data['trade'] = $this->number->index(-1, 0, 10);
         $this->load->view('shouye_index', $data);
@@ -59,4 +59,16 @@ class shouye extends CI_Controller {
         $cap = create_custom_captcha($vals);
         $this->session->set_flashdata('captcha_word', $cap);
     }
+	
+	public function checkcaptcha()
+	{
+		if ($this->input->post('captcha')) {
+			$this->load->library('session');
+            if ($this->session->flashdata('captcha_word') != $this->input->post('captcha')) {
+                echo '0';
+            } else {
+				echo '1';
+			}
+		}
+	}
 }
